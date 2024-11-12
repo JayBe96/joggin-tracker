@@ -9,5 +9,9 @@ export const routes: Routes = [
     path: '',
     redirectTo: 'login',
     pathMatch: 'full',
+  },  {
+    path: 'homescreen',
+    loadComponent: () => import('./homescreen/homescreen.page').then( m => m.HomescreenPage)
   },
+
 ];
