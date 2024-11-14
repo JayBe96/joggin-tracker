@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonTabBar, IonTabButton, IonIcon, IonLabel, IonTabs } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonTabBar, IonTabButton, IonIcon, IonLabel, IonTabs, IonMenu, IonMenuButton, IonButtons, IonList, IonItem } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { barbellOutline, statsChartOutline } from 'ionicons/icons';
 
@@ -25,13 +25,19 @@ addIcons({
     IonIcon,
     IonLabel,
     IonTabs,
+    IonMenu,
+    IonMenuButton,
+    IonButtons,
+    IonList,
+    IonItem,
     CommonModule,
     FormsModule
   ]
 })
 export class HomescreenPage implements OnInit {
 
-  constructor() { }
+  constructor() {
+      addIcons({barbellOutline,statsChartOutline}); }
 
   ngOnInit() {
   }
