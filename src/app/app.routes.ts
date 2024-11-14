@@ -13,5 +13,13 @@ export const routes: Routes = [
     path: 'homescreen',
     loadComponent: () => import('./homescreen/homescreen.page').then( m => m.HomescreenPage)
   },
+  {
+    path: 'workout',
+    loadComponent: () => import('./workout/workout.page').then( m => m.WorkoutPage)
+  },
+  {
+    path: 'data',
+    loadComponent: () => import('./data/data.page').then( m => m.DataPage)
+  },
 
 ];
