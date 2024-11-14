@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonTabBar, IonTabButton, IonIcon, IonLabel, IonTabs, IonMenu, IonMenuButton, IonButtons, IonList, IonItem } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { barbellOutline, statsChartOutline } from 'ionicons/icons';
-
+import { TabsComponent } from '../tabs/tabs.component';
 addIcons({
   'barbell-outline': barbellOutline,
   'stats-chart-outline': statsChartOutline
@@ -27,11 +27,11 @@ addIcons({
     IonTabs,
     IonMenu,
     IonMenuButton,
-    IonButtons,
     IonList,
     IonItem,
     CommonModule,
-    FormsModule
+    FormsModule,
+    TabsComponent
   ]
 })
 export class HomescreenPage implements OnInit {

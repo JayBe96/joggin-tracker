@@ -9,17 +9,17 @@ export const routes: Routes = [
     path: '',
     redirectTo: 'login',
     pathMatch: 'full',
-  },  {
+  },
+  {
     path: 'homescreen',
-    loadComponent: () => import('./homescreen/homescreen.page').then( m => m.HomescreenPage)
+    loadComponent: () => import('./homescreen/homescreen.page').then(m => m.HomescreenPage)
   },
   {
     path: 'workout',
-    loadComponent: () => import('./workout/workout.page').then( m => m.WorkoutPage)
+    loadComponent: () => import('./workout/workout.page').then(m => m.WorkoutPage)
   },
   {
     path: 'data',
-    loadComponent: () => import('./data/data.page').then( m => m.DataPage)
+    loadComponent: () => import('./data/data.page').then(m => m.DataPage)
   },
-
 ];

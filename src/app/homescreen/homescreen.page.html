@@ -6,7 +6,7 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <ion-item routerLink="">
+      <ion-item routerLink="/login">
         <ion-label>Seite 1</ion-label>
       </ion-item>
       <ion-item routerLink="/homescreen">
@@ -18,22 +18,6 @@
 
 <div id="main-content">
   <ion-content [fullscreen]="true">
-    <ion-tabs>
-      <ion-tab-bar slot="bottom">
-        <ion-tab-button tab="workout">
-          <ion-icon name="barbell-outline"></ion-icon>
-          <ion-label>Workout</ion-label>
-        </ion-tab-button>
-
-        <ion-tab-button tab="data">
-          <ion-icon name="stats-chart-outline"></ion-icon>
-          <ion-label>Data</ion-label>
-        </ion-tab-button>
-
-        <ion-tab-button>
-          <ion-menu-button menu="first"></ion-menu-button>
-        </ion-tab-button>
-      </ion-tab-bar>
-    </ion-tabs>
+    <app-tabs></app-tabs>
   </ion-content>
 </div>
