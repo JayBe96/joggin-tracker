@@ -10,7 +10,8 @@ import { AppComponent } from './app/app.component';
 addIcons({
   'barbell-outline': barbellOutline,
   'stats-chart-outline': statsChartOutline,
-  'home-outline': homeOutline
+  'home-outline': homeOutline,
+  'menu-outline': menuOutline
 });
 
 bootstrapApplication(AppComponent, {

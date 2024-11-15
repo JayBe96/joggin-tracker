@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, MenuController } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,5 +9,14 @@ import { RouterModule } from '@angular/router';
   imports: [IonicModule, RouterModule],
 })
 export class TabsComponent {
-  constructor() {}
+  constructor(private menuCtrl: MenuController) {}
+
+  async openMenu() {
+    try {
+      await this.menuCtrl.enable(true, 'main-menu');
+      await this.menuCtrl.toggle('main-menu');
+    } catch (error) {
+      console.error('Menu error:', error);
+    }
+  }
 }
