@@ -8,4 +8,6 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [IonicModule, RouterModule],
 })
-export class TabsComponent {}
+export class TabsComponent {
+  constructor() {}
+}

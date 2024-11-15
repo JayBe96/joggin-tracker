@@ -21,5 +21,5 @@ export const routes: Routes = [
   {
     path: 'data',
     loadComponent: () => import('./data/data.page').then(m => m.DataPage)
-  },
+  }
 ];
