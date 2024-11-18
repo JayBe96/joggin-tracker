@@ -15,8 +15,8 @@ export const routes: Routes = [
     loadComponent: () => import('./homescreen/homescreen.page').then(m => m.HomescreenPage)
   },
   {
-    path: 'workout',
-    loadComponent: () => import('./workout/workout.page').then(m => m.WorkoutPage)
+    path: 'exercise',
+    loadComponent: () => import('./exercise/exercise.page').then(m => m.ExercisePage)
   },
   {
     path: 'data',

@@ -5,9 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { TabsComponent } from '../tabs/tabs.component';
 
 @Component({
-  selector: 'app-workout',
-  templateUrl: './workout.page.html',
-  styleUrls: ['./workout.page.scss'],
+  selector: 'app-exercise',
+  templateUrl: './exercise.page.html',
+  styleUrls: ['./exercise.page.scss'],
   standalone: true,
   imports: [
     IonicModule,
@@ -16,7 +16,7 @@ import { TabsComponent } from '../tabs/tabs.component';
     TabsComponent
   ]
 })
-export class WorkoutPage implements OnInit {
+export class ExercisePage implements OnInit {
 
   constructor() {}
 
