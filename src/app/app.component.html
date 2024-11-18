@@ -10,8 +10,11 @@
         <ion-item [routerLink]="['/info']" (click)="closeMenu()">
           <ion-label>Info</ion-label>
         </ion-item>
-        <ion-item>
-          <ion-label>Option 2</ion-label>
+      </ion-list>
+      
+      <ion-list class="ion-margin-top logout-container">
+        <ion-item [routerLink]="['/login']" (click)="closeMenu()" class="logout-item">
+          <ion-label color="danger" class="ion-text-center">Logout</ion-label>
         </ion-item>
       </ion-list>
     </ion-content>
