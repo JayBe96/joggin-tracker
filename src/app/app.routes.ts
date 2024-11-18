@@ -21,5 +21,10 @@ export const routes: Routes = [
   {
     path: 'data',
     loadComponent: () => import('./data/data.page').then(m => m.DataPage)
+  },
+  {
+    path: 'info',
+    loadComponent: () => import('./info/info.page').then(m => m.InfoPage)
   }
+
 ];

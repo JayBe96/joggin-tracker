@@ -9,9 +9,11 @@ import {
   IonContent,
   IonList,
   IonItem,
-  IonLabel
+  IonLabel,
+  MenuController
 } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -28,9 +30,14 @@ import { CommonModule } from '@angular/common';
     IonContent,
     IonList,
     IonItem,
-    IonLabel
+    IonLabel,
+    RouterModule
   ],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private menuCtrl: MenuController) {}
+
+  async closeMenu() {
+    await this.menuCtrl.close('main-menu');
+  }
 }
