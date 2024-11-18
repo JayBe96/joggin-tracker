@@ -31,7 +31,23 @@ import { TabsComponent } from '../tabs/tabs.component';
   ]
 })
 export class HomescreenPage implements OnInit {
+  isDumbbellMode = false;
+
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    // Initialize background image on component load
+    document.documentElement.style.setProperty(
+      '--background-image',
+      'url("/assets/images/hometrack.png")'
+    );
+  }
+
+  toggleBackground() {
+    this.isDumbbellMode = !this.isDumbbellMode;
+    document.documentElement.style.setProperty(
+      '--background-image',
+      `url('/assets/images/${this.isDumbbellMode ? 'homedumbbell.png' : 'hometrack.png'}')`
+    );
+  }
 }
