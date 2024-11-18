@@ -1,0 +1,21 @@
+ion-content {
+  --background: linear-gradient(
+    rgba(128, 128, 128, 0.25),
+    rgba(128, 128, 128, 0.25)
+  ), url('/assets/images/hometrack.png') no-repeat center center fixed;
+  --background-size: cover;
+  
+  &::part(scroll) {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+// Optional: if you want to apply the effect to specific content
+.content-container {
+  background: rgba(128, 128, 128, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 10px;
+  padding: 20px;
+}
