@@ -25,19 +25,16 @@ export const routes: Routes = [
       {
         path: 'homescreen',
         loadComponent: () => import('./homescreen/homescreen.page').then(m => m.HomescreenPage)
+      },
+      {
+        path: 'menu',
+        children: [
+          {
+            path: 'info',
+            loadComponent: () => import('./info/info.page').then(m => m.InfoPage)
+          }
+        ]
       }
     ]
-  },
-  // {
-  //   path: 'exercise',
-  //   loadComponent: () => import('./exercise/exercise.page').then(m => m.ExercisePage)
-  // },
-  // {
-  //   path: 'data',
-  //   loadComponent: () => import('./data/data.page').then(m => m.DataPage)
-  // },
-  {
-    path: 'info',
-    loadComponent: () => import('./info/info.page').then(m => m.InfoPage)
   }
 ];
