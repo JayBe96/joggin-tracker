@@ -11,30 +11,33 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'homescreen',
-    loadComponent: () => import('./homescreen/homescreen.page').then(m => m.HomescreenPage),
+    path: 'tabs',
+    loadComponent: () => import('./tabs/tabs.component').then(m => m.TabsComponent),
     children: [
       {
         path: 'exercise',
         loadComponent: () => import('./exercise/exercise.page').then(m => m.ExercisePage)
       },
       {
-        path: '',
-        loadComponent: () => import('./tabs/tabs.component').then(m => m.TabsComponent)
+        path: 'data',
+        loadComponent: () => import('./data/data.page').then(m => m.DataPage)
+      },
+      {
+        path: 'homescreen',
+        loadComponent: () => import('./homescreen/homescreen.page').then(m => m.HomescreenPage)
       }
     ]
   },
-  {
-    path: 'exercise',
-    loadComponent: () => import('./exercise/exercise.page').then(m => m.ExercisePage)
-  },
-  {
-    path: 'data',
-    loadComponent: () => import('./data/data.page').then(m => m.DataPage)
-  },
+  // {
+  //   path: 'exercise',
+  //   loadComponent: () => import('./exercise/exercise.page').then(m => m.ExercisePage)
+  // },
+  // {
+  //   path: 'data',
+  //   loadComponent: () => import('./data/data.page').then(m => m.DataPage)
+  // },
   {
     path: 'info',
     loadComponent: () => import('./info/info.page').then(m => m.InfoPage)
   }
-
 ];
