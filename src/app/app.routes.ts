@@ -12,7 +12,17 @@ export const routes: Routes = [
   },
   {
     path: 'homescreen',
-    loadComponent: () => import('./homescreen/homescreen.page').then(m => m.HomescreenPage)
+    loadComponent: () => import('./homescreen/homescreen.page').then(m => m.HomescreenPage),
+    children: [
+      {
+        path: 'exercise',
+        loadComponent: () => import('./exercise/exercise.page').then(m => m.ExercisePage)
+      },
+      {
+        path: '',
+        loadComponent: () => import('./tabs/tabs.component').then(m => m.TabsComponent)
+      }
+    ]
   },
   {
     path: 'exercise',
