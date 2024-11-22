@@ -4,8 +4,35 @@
   </ion-toolbar>
 </ion-header>
 
-<div id="main-content">
-  <ion-content [fullscreen]="true">
 
+  <ion-content [fullscreen]="true">
+    <ion-segment [(ngModel)]="selectedExercise">
+      <ion-segment-button value="run">
+        <ion-label>Run</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="meditation">
+        <ion-label>Meditation</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <div *ngIf="selectedExercise === 'run'">
+      <ion-item>
+        <ion-label position="floating">Duration (minutes)</ion-label>
+        <ion-input type="number" [(ngModel)]="runDuration"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Distance (km)</ion-label>
+        <ion-input type="number" [(ngModel)]="runDistance"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Rate your run</ion-label>
+        <ion-select [(ngModel)]="runRating">
+          <ion-select-option value="good">😊 Good</ion-select-option>
+          <ion-select-option value="normal">😐 Normal</ion-select-option>
+          <ion-select-option value="bad">😞 Bad</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button expand="full" (click)="saveRun()">Save</ion-button>
+    </div>
   </ion-content>
-</div>
+
