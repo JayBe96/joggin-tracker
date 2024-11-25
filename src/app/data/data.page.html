@@ -1,10 +1,41 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>data</ion-title>
+    <ion-title>Data</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<div id="main-content">
-  <ion-content [fullscreen]="true">
-  </ion-content>
-</div>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Runs</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let run of runs">
+          <ion-label>
+            <h2>Duration: {{ run.duration }} minutes</h2>
+            <p>Distance: {{ run.distance }} km</p>
+            <p>Rating: {{ run.rating }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Meditations</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let meditation of meditations">
+          <ion-label>
+            <h2>Duration: {{ meditation.duration }} minutes</h2>
+            <p>Type: {{ meditation.type }}</p>
+            <p>Rating: {{ meditation.rating }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
