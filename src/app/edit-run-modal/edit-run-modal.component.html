@@ -9,6 +9,10 @@
 
 <ion-content>
   <ion-item>
+    <ion-label position="floating">Name</ion-label>
+    <ion-input type="text" maxlength="25" [(ngModel)]="run.name"></ion-input>
+  </ion-item>
+  <ion-item>
     <ion-label position="floating">Duration (minutes)</ion-label>
     <ion-input type="number" min="1" step="0.5" [(ngModel)]="run.duration"></ion-input>
   </ion-item>

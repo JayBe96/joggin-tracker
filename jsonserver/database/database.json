@@ -1,35 +1,4 @@
 {
-  "runs": [
-    {
-      "id": "d858",
-      "duration": 74,
-      "distance": 1,
-      "rating": "normal",
-      "speed": "0.8 km/h",
-      "pace": "75:00 min/km"
-    },
-    {
-      "id": "d78d",
-      "duration": 16,
-      "distance": 3,
-      "rating": "normal",
-      "speed": "12.0 km/h",
-      "pace": "5:00 min/km"
-    },
-    {
-      "id": "f487",
-      "duration": 25,
-      "distance": 4,
-      "rating": "good"
-    },
-    {
-      "id": "62be",
-      "duration": 14.5,
-      "distance": 3,
-      "rating": "good",
-      "speed": "12.0 km/h",
-      "pace": "5:00 min/km"
-    }
-  ],
+  "runs": [],
   "meditations": []
 }

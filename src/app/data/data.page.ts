@@ -33,8 +33,9 @@ export class DataPage implements OnInit {
 
   fetchData() {
     this.dataService.getRuns().subscribe((data: Run[]) => {
-      this.runs = data.map((run: Run) => ({
+      this.runs = data.map((run: Run, index: number) => ({
         ...run,
+        name: run.name || `Run ${index + 1}`,
         speed: this.calculateSpeed(run.distance, run.duration),
         pace: this.calculatePace(run.distance, run.duration)
       }));
