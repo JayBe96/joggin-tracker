@@ -11,7 +11,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "ionic:build": "npm run build",
-    "ionic:serve": "npm run start -- --open"
+    "ionic:serve": "npm run start -- --open",
+    "start:json-server": "json-server --watch jsonserver/database/database.json"
   },
   "private": true,
   "dependencies": {
