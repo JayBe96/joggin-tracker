@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonListHeader, IonItem, IonLabel, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonIcon } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonListHeader, IonItem, IonLabel, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonIcon, ModalController } from '@ionic/angular/standalone';
 import { TabsComponent } from '../tabs/tabs.component';
 import { DataService } from '../services/data.service';
 import { Run } from '../models/run.model';
+import { EditRunModalComponent } from '../edit-run-modal/edit-run-modal.component';
 
 @Component({
   selector: 'app-data',
@@ -20,7 +21,7 @@ export class DataPage implements OnInit {
   runs: Run[] = [];
   meditations: any[] = [];
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private modalController: ModalController) {}
 
   ngOnInit() {
     this.fetchData();
@@ -41,6 +42,27 @@ export class DataPage implements OnInit {
 
     this.dataService.getMeditations().subscribe(data => {
       this.meditations = data;
+    });
+  }
+
+  async editRun(run: Run) {
+    const modal = await this.modalController.create({
+      component: EditRunModalComponent,
+      componentProps: { run }
+    });
+
+    modal.onDidDismiss().then((result) => {
+      if (result.data) {
+        this.updateRun(result.data);
+      }
+    });
+
+    return await modal.present();
+  }
+
+  updateRun(updatedRun: Run) {
+    this.dataService.updateRun(updatedRun).subscribe(() => {
+      this.fetchData();
     });
   }
 

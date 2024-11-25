@@ -11,7 +11,7 @@
     </ion-card-header>
     <ion-card-content>
       <ion-list>
-        <ion-item *ngFor="let run of runs">
+        <ion-item *ngFor="let run of runs" (click)="editRun(run)">
           <ion-label>
             <h2>Duration: {{ run.duration }} minutes</h2>
             <p>Distance: {{ run.distance }} km</p>
@@ -19,7 +19,7 @@
             <p>Speed: {{ run.speed }}</p>
             <p>Pace: {{ run.pace }}</p>
           </ion-label>
-          <ion-button fill="clear" color="danger" (click)="deleteRun(run.id)">
+          <ion-button fill="clear" color="danger" (click)="deleteRun(run.id); $event.stopPropagation()">
             <ion-icon name="trash"></ion-icon>
           </ion-button>
         </ion-item>
