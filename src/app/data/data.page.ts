@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonListHeader, IonItem, IonLabel, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonListHeader, IonItem, IonLabel, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonIcon } from '@ionic/angular/standalone';
 import { TabsComponent } from '../tabs/tabs.component';
 import { DataService } from '../services/data.service';
 import { Run } from '../models/run.model';
@@ -13,7 +13,7 @@ import { Run } from '../models/run.model';
   standalone: true,
   imports: [
     IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, TabsComponent,
-    IonList, IonListHeader, IonItem, IonLabel, IonCard, IonCardHeader, IonCardTitle, IonCardContent
+    IonList, IonListHeader, IonItem, IonLabel, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonIcon
   ]
 })
 export class DataPage implements OnInit {
@@ -41,6 +41,12 @@ export class DataPage implements OnInit {
 
     this.dataService.getMeditations().subscribe(data => {
       this.meditations = data;
+    });
+  }
+
+  deleteRun(id: string) {
+    this.dataService.deleteRun(id).subscribe(() => {
+      this.fetchData();
     });
   }
 

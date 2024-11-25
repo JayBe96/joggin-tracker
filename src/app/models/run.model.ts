@@ -1,4 +1,5 @@
 export interface Run {
+  id: string;
   duration: number;
   distance: number;
   rating: number;
