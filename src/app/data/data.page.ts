@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonListHeader, IonItem, IonLabel, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
 import { TabsComponent } from '../tabs/tabs.component';
 import { DataService } from '../services/data.service';
+import { Run } from '../models/run.model';
 
 @Component({
   selector: 'app-data',
@@ -16,7 +17,7 @@ import { DataService } from '../services/data.service';
   ]
 })
 export class DataPage implements OnInit {
-  runs: any[] = [];
+  runs: Run[] = [];
   meditations: any[] = [];
 
   constructor(private dataService: DataService) {}
@@ -30,12 +31,28 @@ export class DataPage implements OnInit {
   }
 
   fetchData() {
-    this.dataService.getRuns().subscribe(data => {
-      this.runs = data;
+    this.dataService.getRuns().subscribe((data: Run[]) => {
+      this.runs = data.map((run: Run) => ({
+        ...run,
+        speed: this.calculateSpeed(run.distance, run.duration),
+        pace: this.calculatePace(run.distance, run.duration)
+      }));
     });
 
     this.dataService.getMeditations().subscribe(data => {
       this.meditations = data;
     });
+  }
+
+  calculateSpeed(distance: number, duration: number): string {
+    const speed = distance / (duration / 60);
+    return `${speed.toFixed(1)} km/h`;
+  }
+
+  calculatePace(distance: number, duration: number): string {
+    const pace = duration / distance;
+    const minutes = Math.floor(pace);
+    const seconds = Math.round((pace - minutes) * 60);
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds} min/km`;
   }
 }
