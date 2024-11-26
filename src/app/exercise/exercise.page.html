@@ -1,38 +1,44 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>Exercise</ion-title>
   </ion-toolbar>
 </ion-header>
 
+<ion-content [fullscreen]="true">
+  <ion-segment [(ngModel)]="selectedExercise">
+    <ion-segment-button value="run">
+      <ion-label>Run</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="meditation">
+      <ion-label>Meditation</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
-  <ion-content [fullscreen]="true">
-    <ion-segment [(ngModel)]="selectedExercise">
-      <ion-segment-button value="run">
-        <ion-label>Run</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="meditation">
-        <ion-label>Meditation</ion-label>
-      </ion-segment-button>
-    </ion-segment>
+  <div *ngIf="selectedExercise === 'run'">
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input type="text" maxlength="25" [(ngModel)]="runName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Duration (minutes)</ion-label>
+      <ion-input type="number" min="1" step="0.5" [(ngModel)]="runDuration"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Distance (km)</ion-label>
+      <ion-input type="number" min="0.5" step="0.25" [(ngModel)]="runDistance"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Rate your run</ion-label>
+      <ion-select [(ngModel)]="runRating">
+        <ion-select-option value="good">😊 Good</ion-select-option>
+        <ion-select-option value="normal">😐 Normal</ion-select-option>
+        <ion-select-option value="bad">😞 Bad</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button expand="full" (click)="saveRun()">Save</ion-button>
+  </div>
 
-    <div *ngIf="selectedExercise === 'run'">
-      <ion-item>
-        <ion-label position="floating">Duration (minutes)</ion-label>
-        <ion-input type="number" [(ngModel)]="runDuration"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Distance (km)</ion-label>
-        <ion-input type="number" [(ngModel)]="runDistance"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Rate your run</ion-label>
-        <ion-select [(ngModel)]="runRating">
-          <ion-select-option value="good">😊 Good</ion-select-option>
-          <ion-select-option value="normal">😐 Normal</ion-select-option>
-          <ion-select-option value="bad">😞 Bad</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-button expand="full" (click)="saveRun()">Save</ion-button>
-    </div>
-  </ion-content>
-
+  <div *ngIf="selectedExercise === 'meditation'">
+    <!-- Add your meditation form inputs here -->
+  </div>
+</ion-content>

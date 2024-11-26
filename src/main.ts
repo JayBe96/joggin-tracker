@@ -2,7 +2,8 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { RouteReuseStrategy, provideRouter, withPreloading, PreloadAllModules } from '@angular/router';
 import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { barbellOutline, statsChartOutline, menuOutline, homeOutline, logoGithub } from 'ionicons/icons';
+import { barbellOutline, statsChartOutline, menuOutline, homeOutline, logoGithub, trash } from 'ionicons/icons';
+import { provideHttpClient } from '@angular/common/http';
 
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
@@ -12,7 +13,8 @@ addIcons({
   'stats-chart-outline': statsChartOutline,
   'home-outline': homeOutline,
   'menu-outline': menuOutline,
-  'logo-github': logoGithub
+  'logo-github': logoGithub,
+  'trash': trash
 });
 
 bootstrapApplication(AppComponent, {
@@ -20,5 +22,6 @@ bootstrapApplication(AppComponent, {
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
     provideRouter(routes, withPreloading(PreloadAllModules)),
+    provideHttpClient()
   ],
 });
