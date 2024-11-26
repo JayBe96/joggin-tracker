@@ -39,6 +39,43 @@
   </div>
 
   <div *ngIf="selectedExercise === 'meditation'">
-    <!-- Add your meditation form inputs here -->
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input type="text" maxlength="25" [(ngModel)]="meditationName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Duration (minutes)</ion-label>
+      <ion-input type="number" min="1" step="0.5" [(ngModel)]="meditationDuration"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Type</ion-label>
+      <ion-radio-group [(ngModel)]="meditationType">
+        <ion-item>
+          <ion-label>Mindfulness meditation</ion-label>
+          <ion-radio slot="start" value="Mindfulness meditation"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Dynamically meditation</ion-label>
+          <ion-radio slot="start" value="Dynamically meditation"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Transcendental meditation</ion-label>
+          <ion-radio slot="start" value="Transcendental meditation"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Mantra-Meditation</ion-label>
+          <ion-radio slot="start" value="Mantra-Meditation"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-item>
+    <ion-item>
+      <ion-label>Rate your meditation</ion-label>
+      <ion-select [(ngModel)]="meditationRating">
+        <ion-select-option value="good">😊 Good</ion-select-option>
+        <ion-select-option value="normal">😐 Normal</ion-select-option>
+        <ion-select-option value="bad">😞 Bad</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button expand="full" (click)="saveMeditation()">Save</ion-button>
   </div>
 </ion-content>

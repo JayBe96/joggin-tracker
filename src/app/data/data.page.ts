@@ -5,7 +5,9 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonListHeader, Io
 import { TabsComponent } from '../tabs/tabs.component';
 import { DataService } from '../services/data.service';
 import { Run } from '../models/run.model';
+import { Meditation } from '../models/meditation.model';
 import { EditRunModalComponent } from '../edit-run-modal/edit-run-modal.component';
+import { EditMeditationModalComponent } from '../edit-meditation-modal/edit-meditation-modal.component';
 
 @Component({
   selector: 'app-data',
@@ -19,7 +21,7 @@ import { EditRunModalComponent } from '../edit-run-modal/edit-run-modal.componen
 })
 export class DataPage implements OnInit {
   runs: Run[] = [];
-  meditations: any[] = [];
+  meditations: Meditation[] = [];
 
   constructor(private dataService: DataService, private modalController: ModalController) {}
 
@@ -41,7 +43,7 @@ export class DataPage implements OnInit {
       }));
     });
 
-    this.dataService.getMeditations().subscribe(data => {
+    this.dataService.getMeditations().subscribe((data: Meditation[]) => {
       this.meditations = data;
     });
   }
@@ -61,14 +63,41 @@ export class DataPage implements OnInit {
     return await modal.present();
   }
 
+  async editMeditation(meditation: Meditation) {
+    const modal = await this.modalController.create({
+      component: EditMeditationModalComponent,
+      componentProps: { meditation }
+    });
+
+    modal.onDidDismiss().then((result) => {
+      if (result.data) {
+        this.updateMeditation(result.data);
+      }
+    });
+
+    return await modal.present();
+  }
+
   updateRun(updatedRun: Run) {
     this.dataService.updateRun(updatedRun).subscribe(() => {
       this.fetchData();
     });
   }
 
+  updateMeditation(updatedMeditation: Meditation) {
+    this.dataService.updateMeditation(updatedMeditation).subscribe(() => {
+      this.fetchData();
+    });
+  }
+
   deleteRun(id: string) {
     this.dataService.deleteRun(id).subscribe(() => {
+      this.fetchData();
+    });
+  }
+
+  deleteMeditation(id: string) {
+    this.dataService.deleteMeditation(id).subscribe(() => {
       this.fetchData();
     });
   }
