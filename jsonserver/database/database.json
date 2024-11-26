@@ -1,4 +1,19 @@
 {
   "runs": [],
-  "meditations": []
+  "meditations": [
+    {
+      "id": "16430045-af0b-414d-baf3-062892c16a96",
+      "name": "Meditation 1",
+      "duration": 10,
+      "type": "Mindfulness meditation",
+      "rating": "normal"
+    },
+    {
+      "id": "e3fe6255-6ac9-48d6-9520-66a88cc49e69",
+      "name": "Meditation 5",
+      "duration": 10,
+      "type": "Mindfulness meditation",
+      "rating": "normal"
+    }
+  ]
 }

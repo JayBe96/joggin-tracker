@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Run } from '../models/run.model';
+import { Meditation } from '../models/meditation.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,11 @@ export class ExerciseService {
     return this.http.post<Run>(`${this.apiUrl}/runs`, run);
   }
 
-  addMeditation(meditation: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/meditations`, meditation);
+  getMeditations(): Observable<Meditation[]> {
+    return this.http.get<Meditation[]>(`${this.apiUrl}/meditations`);
+  }
+
+  addMeditation(meditation: Meditation): Observable<Meditation> {
+    return this.http.post<Meditation>(`${this.apiUrl}/meditations`, meditation);
   }
 }
