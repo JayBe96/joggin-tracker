@@ -1,19 +1,71 @@
 {
-  "runs": [],
+  "runs": [
+    {
+      "id": "b65e6161-7cef-4cec-9e0f-93c2432d5552",
+      "name": "1. Nov. 2024",
+      "duration": 14,
+      "distance": 2,
+      "rating": "bad"
+    },
+    {
+      "id": "12195f92-0b74-4b85-84bb-0a85d8c1ada2",
+      "name": "31. Okt. 2024",
+      "duration": 22.5,
+      "distance": 2.75,
+      "rating": "bad",
+      "speed": "7.3 km/h",
+      "pace": "8:11 min/km"
+    },
+    {
+      "id": "6713c05f-c262-40d0-b27f-abc19137cf2a",
+      "name": "28. Okt. 2024",
+      "duration": 19.5,
+      "distance": 2.5,
+      "rating": "normal"
+    },
+    {
+      "id": "5cbe2151-b8c4-466b-9bd7-1b97f7f99b19",
+      "name": "27. Okt 2024",
+      "duration": 50,
+      "distance": 6.5,
+      "rating": "good"
+    },
+    {
+      "id": "dad03cca-3ec1-44cb-9c4f-f162ec74f0ef",
+      "name": "24. Okt 2024",
+      "duration": 17.5,
+      "distance": 2.25,
+      "rating": "normal"
+    }
+  ],
   "meditations": [
     {
-      "id": "0a438070-9302-4359-a5f7-72ce25d9a3da",
-      "name": "Meditation 3",
+      "id": "e4ece3f0-c232-410d-9bca-1c6cbbf6aaae",
+      "name": "1. Mindfull",
       "duration": 10,
       "type": "Mindfulness meditation",
       "rating": "normal"
     },
     {
-      "id": "83cc4a13-f9b3-4461-9ad9-9f5d040067bb",
-      "name": "Meditation 4",
-      "duration": 10,
-      "type": "Mindfulness meditation",
+      "id": "fd820761-5705-4796-b614-5165d9f514ed",
+      "name": "1, dynamically",
+      "duration": 13,
+      "type": "Dynamically meditation",
+      "rating": "good"
+    },
+    {
+      "id": "02a21985-9c8e-4213-8353-901b49e38083",
+      "name": "1. Transcendental",
+      "duration": 12,
+      "type": "Transcendental meditation",
       "rating": "normal"
+    },
+    {
+      "id": "e882160d-2d6d-438e-a44a-9ee14409a382",
+      "name": "1. Mantra",
+      "duration": 7,
+      "type": "Mantra-Meditation",
+      "rating": "bad"
     }
   ]
 }
