@@ -2,15 +2,15 @@
   "runs": [],
   "meditations": [
     {
-      "id": "16430045-af0b-414d-baf3-062892c16a96",
-      "name": "Meditation 1",
+      "id": "0a438070-9302-4359-a5f7-72ce25d9a3da",
+      "name": "Meditation 3",
       "duration": 10,
       "type": "Mindfulness meditation",
       "rating": "normal"
     },
     {
-      "id": "e3fe6255-6ac9-48d6-9520-66a88cc49e69",
-      "name": "Meditation 5",
+      "id": "83cc4a13-f9b3-4461-9ad9-9f5d040067bb",
+      "name": "Meditation 4",
       "duration": 10,
       "type": "Mindfulness meditation",
       "rating": "normal"

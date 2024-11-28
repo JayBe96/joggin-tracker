@@ -12,7 +12,8 @@
     "lint": "ng lint",
     "ionic:build": "npm run build",
     "ionic:serve": "npm run start -- --open",
-    "start:json-server": "json-server --watch jsonserver/database/database.json"
+    "start:db": "npx json-server --watch jsonserver/database/database.json",
+    "start:auth": "npx json-server --watch jsonserver/authentification/auth.json --port 3001"
   },
   "private": true,
   "dependencies": {

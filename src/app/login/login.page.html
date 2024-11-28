@@ -8,10 +8,10 @@
 
 <ion-content [fullscreen]="true">
   <div id="container">
-    <form>
+    <form (ngSubmit)="onLogin()">
       <h1 class="heading">Login<br><br></h1>
-      <ion-input label="Account Name" label-placement="floating" fill="outline" placeholder="Accountname"></ion-input>
-      <ion-input label="Password" label-placement="floating" fill="outline" type="password" placeholder="*********"></ion-input>
+      <ion-input [(ngModel)]="username" name="username" label="Account Name" label-placement="floating" fill="outline" placeholder="Accountname" required></ion-input>
+      <ion-input [(ngModel)]="password" name="password" label="Password" label-placement="floating" fill="outline" type="password" placeholder="*********" required></ion-input>
       <ion-button expand="full" type="submit">Login</ion-button>
       <ion-button expand="full" type="button">Create Account</ion-button>
     </form>
