@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonListHeader, IonItem, IonLabel, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonIcon, ModalController } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonListHeader, IonItem, IonLabel, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonIcon, ModalController, ToastController } from '@ionic/angular/standalone';
 import { TabsComponent } from '../tabs/tabs.component';
 import { DataService } from '../services/data.service';
 import { Run } from '../models/run.model';
@@ -23,7 +23,7 @@ export class DataPage implements OnInit {
   runs: Run[] = [];
   meditations: Meditation[] = [];
 
-  constructor(private dataService: DataService, private modalController: ModalController) {}
+  constructor(private dataService: DataService, private modalController: ModalController, private toastController: ToastController) {} // Inject ToastController
 
   ngOnInit() {
     this.fetchData();
@@ -90,15 +90,31 @@ export class DataPage implements OnInit {
     });
   }
 
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000,
+      position: 'bottom',
+      color: 'success'
+    });
+    await toast.present();
+  }
+
   deleteRun(id: string) {
     this.dataService.deleteRun(id).subscribe(() => {
       this.fetchData();
+      this.presentToast('Run deleted successfully!');
+    }, error => {
+      console.error('Error deleting run', error);
     });
   }
 
   deleteMeditation(id: string) {
     this.dataService.deleteMeditation(id).subscribe(() => {
       this.fetchData();
+      this.presentToast('Meditation deleted successfully!');
+    }, error => {
+      console.error('Error deleting meditation', error);
     });
   }
 

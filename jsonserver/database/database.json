@@ -36,6 +36,20 @@
       "duration": 17.5,
       "distance": 2.25,
       "rating": "normal"
+    },
+    {
+      "id": "466bda82-c363-4d18-b74c-9d0e6851e56c",
+      "name": "Run 6",
+      "duration": 5,
+      "distance": 1,
+      "rating": "normal"
+    },
+    {
+      "id": "05a512c7-a055-493a-bf0b-a19ffcd9df11",
+      "name": "Run 7",
+      "duration": 5,
+      "distance": 1,
+      "rating": "normal"
     }
   ],
   "meditations": [

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ToastController } from '@ionic/angular'; // Import ToastController
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TabsComponent } from '../tabs/tabs.component';
@@ -35,7 +35,9 @@ export class ExercisePage implements OnInit {
   meditationType: string = 'Mindfulness meditation';
   meditationRating: string = 'normal';
 
-  constructor(private exerciseService: ExerciseService) {}
+  isSaving: boolean = false; // Add a boolean flag for disabling inputs
+
+  constructor(private exerciseService: ExerciseService, private toastController: ToastController) {} // Inject ToastController
 
   ngOnInit() {
     this.setInitialRunName();
@@ -56,7 +58,41 @@ export class ExercisePage implements OnInit {
     });
   }
 
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000,
+      position: 'bottom',
+      color: 'light'
+    });
+    await toast.present();
+
+    setTimeout(async () => {
+      toast.color = 'success';
+      await toast.present();
+      this.isSaving = false; // Enable inputs after success toast
+      if (message.includes('Run')) {
+        this.resetRunFields(); // Reset run fields after success toast
+      } else if (message.includes('Meditation')) {
+        this.resetMeditationFields(); // Reset meditation fields after success toast
+      }
+    }, 1000);
+  }
+
+  resetRunFields() {
+    this.runDuration = 5;
+    this.runDistance = 1;
+    this.runRating = 'normal';
+  }
+
+  resetMeditationFields() {
+    this.meditationDuration = 10;
+    this.meditationType = 'Mindfulness meditation';
+    this.meditationRating = 'normal';
+  }
+
   saveRun() {
+    this.isSaving = true; // Disable inputs while saving
     const newRun = {
       id: uuidv4(),
       name: this.runName,
@@ -68,12 +104,15 @@ export class ExercisePage implements OnInit {
     this.exerciseService.addRun(newRun).subscribe(response => {
       console.log('Run saved successfully', response);
       this.setInitialRunName();
+      this.presentToast('Run saved successfully!');
     }, error => {
       console.error('Error saving run', error);
+      this.isSaving = false; // Enable inputs if there's an error
     });
   }
 
   saveMeditation() {
+    this.isSaving = true; // Disable inputs while saving
     const newMeditation = {
       id: uuidv4(),
       name: this.meditationName,
@@ -85,8 +124,10 @@ export class ExercisePage implements OnInit {
     this.exerciseService.addMeditation(newMeditation).subscribe(response => {
       console.log('Meditation saved successfully', response);
       this.setInitialMeditationName();
+      this.presentToast('Meditation saved successfully!');
     }, error => {
       console.error('Error saving meditation', error);
+      this.isSaving = false; // Enable inputs if there's an error
     });
   }
 }
