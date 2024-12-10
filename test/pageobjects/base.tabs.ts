@@ -4,7 +4,7 @@ import Page from './page';
 /**
  * Sub page for base function on the app pages excluding the login page
  */
-class baseTabsPage extends Page {
+export class BaseTabsPage extends Page {
     /**
      * define selectors using getter methods
      */
@@ -16,6 +16,9 @@ class baseTabsPage extends Page {
        await this.menuButton.click();
     }
 
+    public override open (path: string) {
+        return super.open(`tabs/${path}`);
+    }
 }
 
-export default new baseTabsPage();
+export default new BaseTabsPage();
