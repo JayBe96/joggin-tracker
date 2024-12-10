@@ -8,16 +8,16 @@ class LoginPage extends Page {
     /**
      * define selectors using getter methods
      */
-    public get inputUsername () {
-        return $('#username');
+    public get inputUsername() {
+        return $('ion-input[name="username"]');
     }
 
-    public get inputPassword () {
-        return $('#password');
+    public get inputPassword() {
+        return $('ion-input[name="password"]');
     }
 
-    public get btnSubmit () {
-        return $('button[type="submit"]');
+    public get btnSubmit() {
+        return $('ion-button[type="submit"]');
     }
 
     /**
@@ -25,15 +25,18 @@ class LoginPage extends Page {
      * e.g. to login using username and password
      */
     public async login (username: string, password: string) {
-        await this.inputUsername.setValue(username);
-        await this.inputPassword.setValue(password);
+        await this.inputUsername.waitForDisplayed();
+        await this.inputUsername.$('input').setValue(username);
+        await this.inputPassword.waitForDisplayed();
+        await this.inputPassword.$('input').setValue(password);
+
         await this.btnSubmit.click();
     }
 
     /**
      * overwrite specific options to adapt it to page object
      */
-    public open () {
+    public override open () {
         return super.open('login');
     }
 }
