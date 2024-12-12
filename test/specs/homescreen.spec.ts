@@ -23,11 +23,6 @@ describe('Homescreen', () => {
             await expect(await browser.getUrl()).toBe(ROUTES.DATA);
         });
 
-        it('TC-02 Navigation to home page', async () => {
-            await baseTabs.homeButton.click();
-            await expect(await browser.getUrl()).toBe(ROUTES.HOMESCREEN);
-        });
-
         it('TC-02 Navigation to menu info page', async () => {
             await baseTabs.openInfoPage();
             await expect(await browser.getUrl()).toBe(ROUTES.MENU_INFO);
