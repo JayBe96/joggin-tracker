@@ -1,17 +1,41 @@
 import { browser } from '@wdio/globals';
+import { ROUTES } from 'test/helper/definition';
+import baseTabs from 'test/pageobjects/base.tabs';
 import homescreen from 'test/pageobjects/homescreen';
 
 
-xdescribe('Homescreen', () => {
+describe('Homescreen', () => {
     beforeEach(async () => {
         await homescreen.open();
-        await browser.execute('window.localStorage.setItem("test", "123")');
-        await browser.pause(1000);
+        await browser.execute('window.localStorage.setItem("loggedIn", "true")');
         await browser.refresh();
-        await browser.pause(1000);
+        await expect(await browser.getUrl()).toBe(ROUTES.HOMESCREEN);
     });
 
-    it('should navigate to homescreen', async () => {
-        await expect(await browser.getUrl()).toBe('http://localhost:4200/tabs/homescreen');
+    describe('TC-02 Navigation', () => {
+        it('TC-02 Navigation to exercise page', async () => {
+            await baseTabs.exerciseButton.click();
+            await expect(await browser.getUrl()).toBe(ROUTES.EXERCISE);
+        });
+
+        it('TC-02 Navigation to data page', async () => {
+            await baseTabs.dataButton.click();
+            await expect(await browser.getUrl()).toBe(ROUTES.DATA);
+        });
+
+        it('TC-02 Navigation to home page', async () => {
+            await baseTabs.homeButton.click();
+            await expect(await browser.getUrl()).toBe(ROUTES.HOMESCREEN);
+        });
+
+        it('TC-02 Navigation to menu info page', async () => {
+            await baseTabs.openInfoPage();
+            await expect(await browser.getUrl()).toBe(ROUTES.MENU_INFO);
+        });
+
+        it('TC-02 Logout', async () => {
+            await baseTabs.logout();
+            await expect(await browser.getUrl()).toBe(ROUTES.LOGIN);
+        });
     });
 });
