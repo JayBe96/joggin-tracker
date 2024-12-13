@@ -24,6 +24,10 @@ export class BaseTabsPage extends Page {
         return $('ion-tab-button[ng-reflect-router-link="exercise"]');
     }
 
+    public get infoToast () {
+        return $('ion-toast');
+    }
+
     // sidemenu items
     public get sideMenuInfo () {
         return $('ion-item[ng-reflect-router-link="tabs/menu/info"]');
@@ -43,7 +47,24 @@ export class BaseTabsPage extends Page {
     public async logout () {
         await this.menuButton.click();
         await this.sideMenuLogout.click();
-     }
+    }
+
+    public async isInfoToast (): Promise<boolean> {
+        const color = await this.infoToast.getAttribute('color');
+        return color === 'light';
+    }
+
+    public async isSuccessToast (): Promise<boolean> {
+        await browser.waitUntil(async () => {
+            const color = await this.infoToast.getAttribute('color');
+            return color === 'success';
+        }, {
+            timeout: 5000,
+            timeoutMsg: 'expected toast to be success'
+        });
+        const color = await this.infoToast.getAttribute('color');
+        return color === 'success';
+    }
 
     public override open (path: string) {
         return super.open(`tabs/${path}`);
