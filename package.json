@@ -13,7 +13,8 @@
     "ionic:build": "npm run build",
     "ionic:serve": "npm run start -- --open",
     "start:db": "npx json-server --watch jsonserver/database/database.json",
-    "start:auth": "npx json-server --watch jsonserver/authentification/auth.json --port 3001"
+    "start:auth": "npx json-server --watch jsonserver/authentification/auth.json --port 3001",
+    "wdio": "npx wdio run ./wdio.conf.js"
   },
   "private": true,
   "dependencies": {

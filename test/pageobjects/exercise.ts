@@ -1,5 +1,5 @@
 import { BaseTabsPage } from './base.tabs';
-import { $, browser } from '@wdio/globals'
+import { $ } from '@wdio/globals'
 
 class ExercisesPage extends BaseTabsPage {
 

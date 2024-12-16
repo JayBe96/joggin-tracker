@@ -102,7 +102,7 @@ export class ExercisePage implements OnInit {
     };
 
     this.exerciseService.addRun(newRun).subscribe(response => {
-      console.log('Run saved successfully', response);
+      // console.log('Run saved successfully', response);
       this.setInitialRunName();
       this.presentToast('Run saved successfully!');
     }, error => {
@@ -122,7 +122,7 @@ export class ExercisePage implements OnInit {
     };
 
     this.exerciseService.addMeditation(newMeditation).subscribe(response => {
-      console.log('Meditation saved successfully', response);
+      // console.log('Meditation saved successfully', response);
       this.setInitialMeditationName();
       this.presentToast('Meditation saved successfully!');
     }, error => {

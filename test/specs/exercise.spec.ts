@@ -18,6 +18,7 @@ describe('Exercise Page', () => {
     
     afterAll(async () => {
         await loadTestDatabase();
+        await browser.execute('window.localStorage.clear();');
     });
 
     it('TC-02 Navigation to homescreen', async () => {
@@ -54,7 +55,7 @@ describe('Exercise Page', () => {
         await exercise.rateRun('bad');
         await exercise.saveRunButton.click();
         await exercise.isSuccessToast();
-        await expect(checkNthRun(5, 'Test Run', 10, 5, 'bad')).toBe(true);
+        await expect(checkNthRun(6, 'Test Run', 10, 5, 'bad')).toBe(true);
     });
 
     it('TC-04 (Database) Enter a Test Meditation', async () => {

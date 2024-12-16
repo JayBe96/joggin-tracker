@@ -11,7 +11,7 @@
     </ion-card-header>
     <ion-card-content>
       <ion-list>
-        <ion-item *ngFor="let run of runs" (click)="editRun(run)">
+        <ion-item *ngFor="let run of runs; let i = index" (click)="editRun(run)" [attr.data-testid]="'data-run-item-' + (i + 1)">
           <ion-label>
             <h3>{{ run.name }}</h3>
             <p>Duration: {{ run.duration }} minutes</p>
@@ -34,7 +34,7 @@
     </ion-card-header>
     <ion-card-content>
       <ion-list>
-        <ion-item *ngFor="let meditation of meditations" (click)="editMeditation(meditation)">
+        <ion-item *ngFor="let meditation of meditations; let i = index" (click)="editMeditation(meditation)" [attr.data-testid]="'data-meditation-item-' + (i + 1)">
           <ion-label>
             <h3>{{ meditation.name }}</h3>
             <p>Duration: {{ meditation.duration }} minutes</p>

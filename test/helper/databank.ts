@@ -10,13 +10,14 @@ export function loadTestDatabase() {
 }
 
 export function checkNthRun(n: number, name: string, duration: number, distance: number, rating: string): boolean {
+    n = n - 1; // Adjust the index to be zero-based
     const database = JSON.parse(fs.readFileSync(databasePath, 'utf-8'));
     if (n < 0 || n >= database.runs.length) {
         console.log('Invalid run index');
         return false;
     }
     const run = database.runs[n];
-    console.log(run);
+    // console.log(run);
     return run.name === name && 
            run.duration === duration && 
            run.distance === distance && 
@@ -31,7 +32,7 @@ export function checkNthMeditation(n: number, name: string, duration: number, ty
         return false;
     }
     const meditation = database.meditations[n];
-    console.log(meditation);
+    // console.log(meditation);
     return meditation.name === name && 
            meditation.duration === duration && 
            meditation.type === type && 
