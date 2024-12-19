@@ -27,6 +27,12 @@ export class DataPage extends BaseTabsPage {
         const runDistance = await runLabel.$('p:nth-of-type(2)').getText();
         const runRating = await runLabel.$('p:nth-of-type(3)').getText();
 
+        console.log(`\n Index: ${n}`);
+        console.log(`Run Date: ${runDate}`);
+        console.log(`Run Duration: ${runDuration}`);
+        console.log(`Run Distance: ${runDistance}`);
+        console.log(`Run Rating: ${runRating}`);
+
         return runDate === date &&
                runDuration === `Duration: ${duration} minutes` &&
                runDistance === `Distance: ${distance} km` &&
