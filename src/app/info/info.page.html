@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="tabs/homescreen"></ion-back-button>
+      <ion-back-button defaultHref="tabs/homescreen" data-testid="back-button"></ion-back-button>
     </ion-buttons>
     <ion-title>Infopage</ion-title>
   </ion-toolbar>
@@ -96,7 +96,7 @@
       <!-- TODO: vielleicht hier einfach durch github.com ersetzten, 
            TODO: falls dies in den Tests nicht geht -->
     <div class="ion-text-center ion-padding-top">
-      <ion-button href="https://github.com/JayBe96/joggin-tracker" target="_blank">
+      <ion-button href="https://github.com/JayBe96/" target="_blank" data-testid="button-viewOnGitHub">
         <ion-icon slot="start" name="logo-github"></ion-icon>
         View on GitHub
       </ion-button>

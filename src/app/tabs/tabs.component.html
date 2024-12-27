@@ -1,21 +1,21 @@
 <ion-tabs>
   <ion-tab-bar slot="bottom">
-    <ion-tab-button [routerLink]="['exercise']" routerLinkActive="tab-selected">
+    <ion-tab-button [routerLink]="['exercise']" routerLinkActive="tab-selected" data-testid="tab-exercise">
       <ion-icon name="barbell-outline"></ion-icon>
       <ion-label>Exercise</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button [routerLink]="['data']" routerLinkActive="tab-selected">
+    <ion-tab-button [routerLink]="['data']" routerLinkActive="tab-selected" data-testid="tab-data">
       <ion-icon name="stats-chart-outline"></ion-icon>
       <ion-label>Data</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button [routerLink]="['homescreen']" routerLinkActive="tab-selected">
+    <ion-tab-button [routerLink]="['homescreen']" routerLinkActive="tab-selected" data-testid="tab-home">
       <ion-icon name="home-outline"></ion-icon>
       <ion-label>Home</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button (click)="openMenu()">
+    <ion-tab-button (click)="openMenu()" data-testid="tab-menu">
       <ion-menu-button autoHide="false"></ion-menu-button>
       <ion-label>Menu</ion-label>
     </ion-tab-button>

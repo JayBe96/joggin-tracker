@@ -5,51 +5,99 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-segment [(ngModel)]="selectedExercise">
-    <ion-segment-button value="run">
+  <ion-segment [(ngModel)]="selectedExercise" data-testid="exercise-segment">
+    <ion-segment-button value="run" data-testid="segment-run">
       <ion-label>Run</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="meditation">
+    <ion-segment-button value="meditation" data-testid="segment-meditation">
       <ion-label>Meditation</ion-label>
     </ion-segment-button>
   </ion-segment>
 
-  <div *ngIf="selectedExercise === 'run'">
+  <div *ngIf="selectedExercise === 'run'" data-testid="run-section">
     <ion-item>
       <ion-label position="floating">Run Name</ion-label>
-      <ion-input type="text" maxlength="25" [(ngModel)]="runName" [disabled]="isSaving"></ion-input>
+      <ion-input
+        type="text"
+        maxlength="25"
+        [(ngModel)]="runName"
+        [disabled]="isSaving"
+        data-testid="input-runName"
+      ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Duration (minutes)</ion-label>
-      <ion-input type="number" min="1" step="0.5" [(ngModel)]="runDuration" [disabled]="isSaving"></ion-input>
+      <ion-input
+        type="number"
+        min="1"
+        step="0.5"
+        [(ngModel)]="runDuration"
+        [disabled]="isSaving"
+        data-testid="input-runDuration"
+      ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Distance (km)</ion-label>
-      <ion-input type="number" min="0.1" step="0.1" [(ngModel)]="runDistance" [disabled]="isSaving"></ion-input>
+      <ion-input
+        type="number"
+        min="0.1"
+        step="0.1"
+        [(ngModel)]="runDistance"
+        [disabled]="isSaving"
+        data-testid="input-runDistance"
+      ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Rate your run</ion-label>
-      <ion-select [(ngModel)]="runRating" [disabled]="isSaving">
+      <ion-select
+        [(ngModel)]="runRating"
+        [disabled]="isSaving"
+        data-testid="select-runRating"
+      >
         <ion-select-option value="good">😊 Good</ion-select-option>
         <ion-select-option value="normal">😐 Normal</ion-select-option>
         <ion-select-option value="bad">😞 Bad</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-button expand="full" (click)="saveRun()" [disabled]="isSaving">Save Run</ion-button>
+    <ion-button
+      expand="full"
+      (click)="saveRun()"
+      [disabled]="isSaving"
+      data-testid="button-saveRun"
+    >
+      Save Run
+    </ion-button>
   </div>
 
-  <div *ngIf="selectedExercise === 'meditation'">
+  <div *ngIf="selectedExercise === 'meditation'" data-testid="meditation-section">
     <ion-item>
       <ion-label position="floating">Name</ion-label>
-      <ion-input type="text" maxlength="25" [(ngModel)]="meditationName" [disabled]="isSaving"></ion-input>
+      <ion-input
+        type="text"
+        maxlength="25"
+        [(ngModel)]="meditationName"
+        [disabled]="isSaving"
+        data-testid="input-meditationName"
+      ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Duration (minutes)</ion-label>
-      <ion-input type="number" min="1" step="0.5" [(ngModel)]="meditationDuration" [disabled]="isSaving"></ion-input>
+      <ion-input
+        type="number"
+        min="1"
+        step="0.5"
+        [(ngModel)]="meditationDuration"
+        [disabled]="isSaving"
+        data-testid="input-meditationDuration"
+      ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Type</ion-label>
-      <ion-radio-group [(ngModel)]="meditationType" [disabled]="isSaving">
+      <ion-radio-group
+        [(ngModel)]="meditationType"
+        [disabled]="isSaving"
+        data-testid="radio-meditationType"
+      >
         <ion-item>
           <ion-label>Mindfulness meditation</ion-label>
           <ion-radio slot="start" value="Mindfulness meditation"></ion-radio>
@@ -70,12 +118,23 @@
     </ion-item>
     <ion-item>
       <ion-label>Rate your meditation</ion-label>
-      <ion-select [(ngModel)]="meditationRating" [disabled]="isSaving">
+      <ion-select
+        [(ngModel)]="meditationRating"
+        [disabled]="isSaving"
+        data-testid="select-meditationRating"
+      >
         <ion-select-option value="good">😊 Good</ion-select-option>
         <ion-select-option value="normal">😐 Normal</ion-select-option>
         <ion-select-option value="bad">😞 Bad</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-button expand="full" (click)="saveMeditation()" [disabled]="isSaving">Save Meditation</ion-button>
+    <ion-button
+      expand="full"
+      (click)="saveMeditation()"
+      [disabled]="isSaving"
+      data-testid="button-saveMeditation"
+    >
+      Save Meditation
+    </ion-button>
   </div>
 </ion-content>

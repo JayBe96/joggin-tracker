@@ -5,13 +5,18 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
+  <!-- Runs Section -->
   <ion-card>
     <ion-card-header>
       <ion-card-title>Runs</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-list>
-        <ion-item *ngFor="let run of runs" (click)="editRun(run)">
+        <ion-item
+          *ngFor="let run of runs; index as i"
+          (click)="editRun(run)"
+          [attr.data-testid]="'item-run-' + (i + 1)"
+        >
           <ion-label>
             <h3>{{ run.name }}</h3>
             <p>Duration: {{ run.duration }} minutes</p>
@@ -20,7 +25,12 @@
             <p>Speed: {{ run.speed }}</p>
             <p>Pace: {{ run.pace }}</p>
           </ion-label>
-          <ion-button fill="clear" color="danger" (click)="deleteRun(run.id); $event.stopPropagation()">
+          <ion-button
+            fill="clear"
+            color="danger"
+            (click)="deleteRun(run.id); $event.stopPropagation()"
+            [attr.data-testid]="'button-deleteRun-' + (i + 1)"
+          >
             <ion-icon name="trash"></ion-icon>
           </ion-button>
         </ion-item>
@@ -28,20 +38,30 @@
     </ion-card-content>
   </ion-card>
 
+  <!-- Meditations Section -->
   <ion-card>
     <ion-card-header>
       <ion-card-title>Meditations</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-list>
-        <ion-item *ngFor="let meditation of meditations" (click)="editMeditation(meditation)">
+        <ion-item
+          *ngFor="let meditation of meditations; index as j"
+          (click)="editMeditation(meditation)"
+          [attr.data-testid]="'item-meditation-' + (j + 1)"
+        >
           <ion-label>
             <h3>{{ meditation.name }}</h3>
             <p>Duration: {{ meditation.duration }} minutes</p>
             <p>Type: {{ meditation.type }}</p>
             <p>Rating: {{ meditation.rating }}</p>
           </ion-label>
-          <ion-button fill="clear" color="danger" (click)="deleteMeditation(meditation.id); $event.stopPropagation()">
+          <ion-button
+            fill="clear"
+            color="danger"
+            (click)="deleteMeditation(meditation.id); $event.stopPropagation()"
+            [attr.data-testid]="'button-deleteMeditation-' + (j + 1)"
+          >
             <ion-icon name="trash"></ion-icon>
           </ion-button>
         </ion-item>
