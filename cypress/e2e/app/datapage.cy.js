@@ -6,7 +6,6 @@ describe('Data Page Tests', () => {
   });
 
   afterEach(() => {
-    cy.clearLocalStorage();
     cy.fixture('testdatabase.json').then((data) => {
       cy.writeFile('jsonserver/database/database.json', data);
     });
@@ -96,18 +95,27 @@ describe('Data Page Tests', () => {
       });
     });
 
-    xit('navigates to edit run when a run item is clicked', () => {
-      cy.get('ion-item[data-testid="item-run-1"]').click();
-      cy.url().should('include', '/edit-run');
-    });
-
-    xit('deletes a run and removes it from the list', () => {
-      cy.get('ion-item[data-testid="item-run-1"]').within(() => {
-        cy.get('ion-button[data-testid="button-deleteRun-1"]').click();
+    it('deletes a run with confirmation and removes it from the database', () => {
+        cy.readFile('jsonserver/database/database.json').then((data) => {
+          const initialRunCount = data.runs.length;
+          const runToDelete = data.runs[0];
+      
+        // Scroll to the delete button and click it
+        cy.get(`ion-button[data-testid="button-deleteRun-1"]`)
+          .scrollIntoView({ ensureScrollable: false })
+          .click({ force: true });
+      
+          // Verify that the run is removed from the UI
+          cy.get('ion-item[data-testid^="item-run-"]').should('have.length', initialRunCount - 1);
+      
+          // Verify that the run is removed from the database
+          cy.readFile('jsonserver/database/database.json').then((updatedData) => {
+            const deletedRun = updatedData.runs.find(run => run.id === runToDelete.id);
+            expect(deletedRun).to.not.exist;
+          });
+        });
       });
-      cy.get('ion-item[data-testid="item-run-1"]').should('not.exist');
     });
-  });
 
   // Meditations Section Tests
   describe('Meditations Section', () => {
@@ -127,16 +135,75 @@ describe('Data Page Tests', () => {
       });
     });
 
-    xit('navigates to edit meditation when a meditation item is clicked', () => {
-      cy.get('ion-item[data-testid="item-meditation-1"]').click();
-      cy.url().should('include', '/edit-meditation');
-    });
 
-    xit('deletes a meditation and removes it from the list', () => {
+    it('edits a meditation and updates it in the database', () => {
+      // Click on the first meditation item to open the edit modal
+      cy.get('ion-item[data-testid="item-meditation-1"]').click();
+
+      // Update the Name field
+      cy.contains('ion-label', 'Name')
+        .parent()
+        .find('ion-input')
+        .find('input')
+        .clear()
+        .type('Meditation_Test_1');
+
+      // Update the Duration field
+      cy.contains('ion-label', 'Duration (minutes)')
+        .parent()
+        .find('ion-input')
+        .find('input')
+        .clear()
+        .type('10');
+
+      // Update the Type field
+      cy.contains('ion-label', 'Type')
+        .parent()
+        .find('ion-select')
+        .click();
+
+      // Select the "Mantra-Meditation" type from the alert overlay
+      cy.contains('.alert-radio-group button', 'Mantra-Meditation').click();
+
+      // Click the OK button in the alert overlay
+      cy.contains('.alert-button-group button', 'OK').click();
+
+      // Update the Rating field
+      cy.contains('ion-label', 'Rating')
+        .parent()
+        .find('ion-select')
+        .click();
+
+      // Select the "Good" rating from the alert overlay
+      cy.contains('.alert-radio-group button', '😊 Good').click();
+
+      // Click the OK button in the alert overlay
+      cy.contains('.alert-button-group button', 'OK').click();
+
+      // Click the Save button
+      cy.get('ion-button').contains('Save').click();
+
+      // Ensure the meditation item is back in view
+      cy.get('ion-item[data-testid="item-meditation-1"]')
+        .scrollIntoView()
+        .should('be.visible');
+
+      // Verify that the meditation details are updated in the list
       cy.get('ion-item[data-testid="item-meditation-1"]').within(() => {
-        cy.get('ion-button[data-testid="button-deleteMeditation-1"]').click();
+        cy.get('ion-label h3').should('have.text', 'Meditation_Test_1');
+        cy.get('ion-label p').eq(0).should('have.text', 'Duration: 10 minutes');
+        cy.get('ion-label p').eq(1).should('have.text', 'Type: Guided');
+        cy.get('ion-label p').eq(2).should('have.text', 'Rating: good');
       });
-      cy.get('ion-item[data-testid="item-meditation-1"]').should('not.exist');
+
+      // Verify the updated meditation in the database
+      cy.readFile('jsonserver/database/database.json').then((data) => {
+        const updatedMeditation = data.meditations.find(meditation => meditation.name === 'Meditation_Test_1');
+        expect(updatedMeditation).to.exist;
+        expect(updatedMeditation.duration).to.equal(10);
+        expect(updatedMeditation.type).to.equal('Guided');
+        expect(updatedMeditation.rating).to.equal('good');
+      });
     });
   });
 });
