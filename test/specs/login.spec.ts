@@ -1,6 +1,5 @@
 import { browser, expect } from '@wdio/globals'
 import LoginPage from '../pageobjects/login.page'
-import baseTabs from 'test/pageobjects/base.tabs'
 import { ROUTES } from 'test/helper/definition'
 
 
