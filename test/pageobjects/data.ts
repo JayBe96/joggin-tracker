@@ -27,11 +27,11 @@ export class DataPage extends BaseTabsPage {
         const runDistance = await runLabel.$('p:nth-of-type(2)').getText();
         const runRating = await runLabel.$('p:nth-of-type(3)').getText();
 
-        console.log(`\n Index: ${n}`);
-        console.log(`Run Date: ${runDate}`);
-        console.log(`Run Duration: ${runDuration}`);
-        console.log(`Run Distance: ${runDistance}`);
-        console.log(`Run Rating: ${runRating}`);
+        // console.log(`\n Index: ${n}`);
+        // console.log(`Run Date: ${runDate}`);
+        // console.log(`Run Duration: ${runDuration}`);
+        // console.log(`Run Distance: ${runDistance}`);
+        // console.log(`Run Rating: ${runRating}`);
 
         return runDate === date &&
                runDuration === `Duration: ${duration} minutes` &&
@@ -67,6 +67,16 @@ export class DataPage extends BaseTabsPage {
     // open
     public override open () {
         return super.open('data');
+    }
+
+    /**
+     * Scrolls to the nth run element in the list
+     * @param runNumber The index of the run to scroll to
+     */
+    public async scrollToNthRun(runNumber: number) {
+        const runElement = await $(`[data-testid="data-run-item-${runNumber}"]`);
+        await runElement.scrollIntoView();
+        await browser.pause(100); // Small pause for stable rendering
     }
 }
 
