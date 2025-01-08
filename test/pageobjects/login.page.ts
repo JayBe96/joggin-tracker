@@ -25,9 +25,7 @@ class LoginPage extends Page {
      * e.g. to login using username and password
      */
     public async login (username: string, password: string) {
-        await this.inputUsername.waitForDisplayed();
         await this.inputUsername.$('input').setValue(username);
-        await this.inputPassword.waitForDisplayed();
         await this.inputPassword.$('input').setValue(password);
 
         await this.btnSubmit.click();
